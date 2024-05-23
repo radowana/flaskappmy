@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BATBC Stock Historical Data</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        .image-container img {
+            width: 25%; /* Each image takes up about one-third of the screen width */
+            height: auto; /* Maintain aspect ratio */
+            box-sizing: border-box; /* Include padding and border in the element's width */
+            padding: 5px; /* Space between images */
+        }
+        .image-container {
+            display: flex; /* Align images in a row */
+            justify-content: center; /* Center images horizontally */
+            align-items: center; /* Align images vertically */
+            margin-top: 20px; /* Space above the image container */
+        }
+    </style>
+</head>
+<body>
+    <div id="plot"></div>
+    <script>
+        var graph = {{ graphJSON | safe }};
+        Plotly.newPlot('plot', graph.data, graph.layout);
+    </script>
+
+    <!-- Images at the bottom of the page -->
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Image 1">
+        <img src="{{ url_for('static', filename='images/image2.jpg') }}" alt="Image 2">
+        <img src="{{ url_for('static', filename='images/image3.jpg') }}" alt="Image 3">
+        <img src="{{ url_for('static', filename='images/image4.jpg') }}" alt="Image 4">
+    </div>
+</body>
+</html>
